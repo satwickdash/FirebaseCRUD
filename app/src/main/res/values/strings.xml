@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">EmployeeCRUD</string>
+    <string name="sign_in_label">Sign In </string>
+    <string name="title_activity_add_employee">AddEmployeeActivity</string>
+    <string name="submit_emp_detail_button">Submit</string>
+    <string name="employee_name">Employee Name</string>
+    <string name="employee_id">Employee ID</string>
 </resources>
