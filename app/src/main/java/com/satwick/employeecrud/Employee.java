@@ -7,8 +7,8 @@ import java.util.Date;
 public class Employee {
     private String name;
     private String id;
-//    private Date dateOfBirth;
-//    private String salary;
+    private Date dateOfBirth;
+    private String salary;
 //    private Set<Integer> skillList;
 //    private String imageDbUrl;
 

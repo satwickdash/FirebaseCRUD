@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
 
-    private FirebaseAuth mFirebaseAuth;
+    private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
     private FirebaseUser mFirebaseUser;
     private DatabaseReference query = FirebaseDatabase.getInstance().getReference(DB_PATH);
     private FirebaseRecyclerAdapter<Employee, EmployeeHolder> mFirebaseAdapter;
@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        mFirebaseUser = mFirebaseAuth.getCurrentUser();
         if (mFirebaseUser == null) {
             setContentView(R.layout.activity_signin);
             MaterialButton signIn = findViewById(R.id.sign_in_button);
@@ -156,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
 
             try {
                 if (resultCode == RESULT_OK) {
-                    mFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                    mFirebaseUser = mFirebaseAuth.getCurrentUser();
                     Log.d(TAG, "user: " + mFirebaseUser);
                     setContentView(R.layout.activity_main);
                 } else {

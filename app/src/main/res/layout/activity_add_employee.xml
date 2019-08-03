@@ -14,7 +14,6 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/name_layout"
             android:layout_marginTop="@dimen/text_field_padding"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
@@ -30,7 +29,6 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/id_layout"
             android:layout_marginTop="@dimen/text_field_padding"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
@@ -41,6 +39,22 @@
                 android:hint="@string/employee_id"
                 android:inputType="number"
                 android:id="@+id/empIdText" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/text_field_padding"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/text_field_padding"
+                android:hint="@string/hint_dob"
+                android:inputType="number"
+                android:id="@+id/dob" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
