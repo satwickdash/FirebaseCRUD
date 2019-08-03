@@ -36,11 +36,9 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     public static class EmployeeHolder extends RecyclerView.ViewHolder {
-        MaterialCardView mView;
         TextView t1, t2;
-        public EmployeeHolder(MaterialCardView v) {
+        public EmployeeHolder(View v) {
             super(v);
-            mView = v;
             t1 = v.findViewById(R.id.cardTextView1);
             t2 = v.findViewById(R.id.cardTextView2);
         }
@@ -123,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        query.keepSynced(true);
         FirebaseRecyclerOptions<Employee> options = new FirebaseRecyclerOptions.Builder<Employee>()
                 .setQuery(query, Employee.class)
                 .build();
@@ -159,7 +158,6 @@ public class MainActivity extends AppCompatActivity {
                 if (resultCode == RESULT_OK) {
                     mFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
                     Log.d(TAG, "user: " + mFirebaseUser);
-//                    pushDataToDb();
                     setContentView(R.layout.activity_main);
                 } else {
                     Toast.makeText(this, "Sign In Failed", Toast.LENGTH_SHORT).show();

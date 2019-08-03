@@ -15,6 +15,25 @@ public class AddEmployeeActivity extends AppCompatActivity {
 
     public static final String TAG = "AddEmployeeActivityTag";
     private DatabaseReference query;
+
+    private View.OnClickListener listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            EditText nameText = findViewById(R.id.nameText);
+            EditText empIdText = findViewById(R.id.empIdText);
+
+            String name = nameText.getEditableText().toString();
+            String id = empIdText.getEditableText().toString();
+
+            nameText.setText("");
+            empIdText.setText("");
+            nameText.requestFocus();
+
+            query.child(id).push();
+            query.child(id).setValue(new Employee(name, id));
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,22 +44,6 @@ public class AddEmployeeActivity extends AppCompatActivity {
 
         query = FirebaseDatabase.getInstance().getReference(db_path);
         MaterialButton submitButton = findViewById(R.id.submitButton);
-        submitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText nameText = findViewById(R.id.nameText);
-                EditText empIdText = findViewById(R.id.empIdText);
-
-                String name = nameText.getEditableText().toString();
-                String id = empIdText.getEditableText().toString();
-
-                nameText.setText("");
-                empIdText.setText("");
-                nameText.requestFocus();
-
-                query.child(id).push();
-                query.child(id).setValue(new Employee(name, id));
-            }
-        });
+        submitButton.setOnClickListener(listener);
     }
 }
