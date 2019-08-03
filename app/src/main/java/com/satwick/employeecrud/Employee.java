@@ -2,13 +2,11 @@ package com.satwick.employeecrud;
 
 import androidx.annotation.NonNull;
 
-import java.util.Date;
-
 public class Employee {
     private String name;
     private String id;
-    private Date dateOfBirth;
-    private String salary;
+    private String dateOfBirth;
+//    private String salary;
 //    private Set<Integer> skillList;
 //    private String imageDbUrl;
 
@@ -16,12 +14,13 @@ public class Employee {
 
     }
 
-    public Employee(String name, String id) {
+    public Employee(String name, String id, String dob) {
         this.name = name;
         this.id = id;
+        this.dateOfBirth = dob;
     }
 
-    public Employee(String name, String id, Date dob, String salary) {
+    public Employee(String name, String id, String dob, String salary) {
         this.id = id;
         this.name = name;
 //        this.dateOfBirth = dob;
@@ -82,6 +81,6 @@ public class Employee {
 
     @NonNull
     public String toString() {
-        return "" + ("Name: " + this.name) + (", ID: " + this.id);
+        return "" + ("Name: " + this.name) + (", ID: " + this.id) + (", DOB: " + this.dateOfBirth);
     }
 }
