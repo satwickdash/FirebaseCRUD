@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.database.DatabaseReference;
@@ -18,7 +19,7 @@ import java.util.Locale;
 
 public class AddEmployeeActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
-    public static final String TAG = "DebugTag";
+    public static final String TAG = "AddEmployeeActivity";
     private DatabaseReference query;
     private EditText nameText, empIdText;
     private TextView dobText;
@@ -32,12 +33,11 @@ public class AddEmployeeActivity extends AppCompatActivity implements DatePicker
                 String id = empIdText.getEditableText().toString();
                 String dob = dobText.getText().toString();
 
-                Employee employee = new Employee(name, id, dob);
-                Log.d(TAG, employee.toString());
-
                 query.child(id).push();
-                query.child(id).setValue(employee);
+                query.child(id).setValue(new Employee(name, id, dob));
+
             } catch (Exception e) {
+                Toast.makeText(getApplicationContext(), "Error in onClick. Please check logs.", Toast.LENGTH_LONG).show();
                 Log.d(TAG, "error:" + e.getMessage());
                 e.printStackTrace();
             } finally {
@@ -93,6 +93,6 @@ public class AddEmployeeActivity extends AppCompatActivity implements DatePicker
      */
     @Override
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-        dobText.setText(String.format(Locale.UK, "%d/%d/%d", dayOfMonth, monthOfYear, year));
+        dobText.setText(String.format(Locale.UK, "%d.%d.%d", dayOfMonth, monthOfYear + 1, year));
     }
 }
